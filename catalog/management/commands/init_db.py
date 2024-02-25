@@ -4,7 +4,7 @@ from catalog.models import Catalog
 
 class Command(BaseCommand):
 
-    def handle(self):
+    def handle(self, *args, **options):
         url = 'https://dummyjson.com/products'
         resp = requests(url)
         for item in resp.json():
