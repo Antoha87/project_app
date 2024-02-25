@@ -6,7 +6,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         url = 'https://dummyjson.com/products'
-        resp = requests(url)
+        resp = requests.get(url)
         for item in resp.json():
             Catalog.objects.create(name=item['name'], description=item['description'])
 
