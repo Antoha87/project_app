@@ -11,12 +11,11 @@ class CatalogViewSet(viewsets.ModelViewSet):
 from django.shortcuts import render
 from .models import BinanceData
 import json
-from django.core.serializers.json import DjangoJSONEncoder
 
 def bitcoin_chart(request):
     bitcoin_prices = BinanceData.objects.all().order_by('time')
     bitcoin_prices_json = json.dumps([{
-        'price': item.price,
+        'price': str(item.price),
         'timestamp': item.time.isoformat()
-    } for item in bitcoin_prices], cls=DjangoJSONEncoder)
+    } for item in bitcoin_prices])
     return render(request, 'bitcoin.html', {'bitcoin_prices_json': bitcoin_prices_json})
