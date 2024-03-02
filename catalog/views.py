@@ -16,12 +16,12 @@ class BinanceDataViewSet(viewsets.ModelViewSet):
 
 from django.shortcuts import render
 from .models import BinanceData
-import json
+import simplejson as json
 
 def bitcoin_chart(request):
     bitcoin_prices = BinanceData.objects.all().order_by('time')
     bitcoin_prices_json = json.dumps([{
-        'price': str(item.price),
+        'price': item.price,
         'timestamp': item.time.isoformat()
     } for item in bitcoin_prices])
     return render(request, 'bitcoin.html', {'bitcoin_prices_json': bitcoin_prices_json})
