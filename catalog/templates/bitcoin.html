@@ -5,9 +5,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     var ctx = document.getElementById('bitcoinChart').getContext('2d');
-    var myChart = "{{ bitcoin_prices_json }}";
-    console.log(myChart);
-    var bitcoinPrices = JSON.stringify(myChart);
+    var mChart = "{{ bitcoin_prices_json }}";
+    console.log(mChart);
+    var bitcoinPrices = JSON.stringify(mChart);
     var labels = [];
     var prices = [];
     for (var i = 0; i < bitcoinPrices.length; i++) {
@@ -26,28 +26,5 @@
                 borderWidth: 1
             }]
         },
-        options: {
-            scales: {
-                x: {
-                    type: "time",
-                    ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 20,
-                    },
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Point"
-                    }
-                },
-                y: {
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: "Value"
-                    }
-                }
-            }
-        }
     });
 </script>
