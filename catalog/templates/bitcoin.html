@@ -7,7 +7,7 @@
     var ctx = document.getElementById('bitcoinChart').getContext('2d');
     var myChart = "{{ bitcoin_prices_json }}";
     console.log(myChart);
-    var bitcoinPrices = JSON.parse(myChart.replace(/'/g, '"'));
+    var bitcoinPrices = JSON.stringify(myChart);
     var labels = [];
     var prices = [];
     for (var i = 0; i < bitcoinPrices.length; i++) {
