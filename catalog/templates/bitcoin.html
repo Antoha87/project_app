@@ -5,7 +5,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     var ctx = document.getElementById('bitcoinChart').getContext('2d');
-    var bitcoinPrices = JSON.parse('{{ bitcoin_prices_json }}');
+    var bitcoinPrices = JSON.parse("{{ bitcoin_prices_json }}");
     var labels = [];
     var prices = [];
     for (var i = 0; i < bitcoinPrices.length; i++) {
