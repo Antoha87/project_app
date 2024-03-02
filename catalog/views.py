@@ -13,9 +13,9 @@ from .models import BinanceData
 import json
 
 def bitcoin_chart(request):
-    bitcoin_prices = BinanceData.objects.all().order_by('timestamp')
+    bitcoin_prices = BinanceData.objects.all().order_by('time')
     bitcoin_prices_json = json.dumps([{
         'price': price.price,
-        'timestamp': price.timestamp.isoformat()
+        'timestamp': price.time.isoformat()
     } for price in bitcoin_prices])
     return render(request, 'bitcoin.html', {'bitcoin_prices_json': bitcoin_prices_json})
