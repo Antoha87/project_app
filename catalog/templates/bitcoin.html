@@ -28,17 +28,25 @@
         },
         options: {
             scales: {
-                xAxes: [{
-                    type: 'time',
-                    time: {
-                        unit: 'day'
-                    }
-                }],
-                yAxes: [{
+                x: {
+                    type: "time",
                     ticks: {
-                        beginAtZero: false
+                        autoSkip: true,
+                        maxTicksLimit: 20,
+                    },
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Point"
                     }
-                }]
+                },
+                y: {
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: "Value"
+                    }
+                }
             }
         }
     });
