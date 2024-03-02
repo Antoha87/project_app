@@ -1,11 +1,17 @@
 from rest_framework import viewsets
-from .models import Catalog
-from .serializers import CatalogSerializer
+from .models import Catalog, BinanceData
+from .serializers import CatalogSerializer, BinanceDataSerializer
 
 
 class CatalogViewSet(viewsets.ModelViewSet):
     queryset = Catalog.objects.all()
     serializer_class = CatalogSerializer
+
+
+class BinanceDataViewSet(viewsets.ModelViewSet):
+    queryset = BinanceData.objects.all()
+    serializer_class = BinanceDataSerializer
+
 
 
 from django.shortcuts import render
