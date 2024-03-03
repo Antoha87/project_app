@@ -32,7 +32,7 @@ class BinanceData(models.Model):
 
 class Coin(models.Model):
     name = models.CharField('Coin', max_length=100, unique=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
 
     def __str__(self):
         return self.name
@@ -42,3 +42,16 @@ class Coin(models.Model):
         ordering = ['name']
         verbose_name = 'Coin'
 
+
+class CoinPrice(models.Model):
+    time = models.DateTimeField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    coin = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.coin
+
+    class Meta:
+        verbose_name_plural = 'Coin Prices'
+        ordering = ['time']
+        verbose_name = 'Coin Price'

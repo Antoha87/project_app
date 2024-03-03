@@ -1,5 +1,5 @@
 from celery import shared_task
-from .models import BinanceData, Coin
+from .models import BinanceData, CoinPrice
 import requests
 from datetime import datetime
 
@@ -21,6 +21,6 @@ def get_current_price(name):
     response = requests.get(url)
     data = response.json()
     price = data['price']
-    Coin.objects.get(name=name).update(price=price)
+    CoinPrice.objects.create(name=name, time=datetime.now(), price=price)
     print("finished")
 
