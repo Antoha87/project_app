@@ -10,4 +10,6 @@ def post_save_coin(sender, instance, created, **kwargs):
         name = instance.name
         price = get_current_price.delay(name)
         instance.price = price
-        instance.save()
+        coin_id = instance.id
+
+        Coin.objects.get(id=coin_id).update(price=price)
