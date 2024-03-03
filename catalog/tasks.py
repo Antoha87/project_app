@@ -2,6 +2,7 @@ from celery import shared_task
 from .models import BinanceData, CoinPrice
 import requests
 from datetime import datetime
+from django_app.celery import app
 
 @shared_task
 def get_binance_data():
@@ -15,7 +16,8 @@ def get_binance_data():
         coin='BTCUSDT'
     )
 
-@shared_task
+
+@app.task()
 def get_current_price(name):
     url = f'https://api.binance.com/api/v3/ticker/price?symbol={name}USDT'
     response = requests.get(url)

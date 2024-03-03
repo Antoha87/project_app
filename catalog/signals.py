@@ -6,9 +6,8 @@ from .models import Coin
 
 @receiver(signal=post_save, sender=Coin)
 def post_save_coin(sender, instance, created, **kwargs):
-    if created:
-        name = instance.name
-        get_current_price.delay(name)
+    name = instance.name
+    get_current_price.delay(name)
 
 
 
