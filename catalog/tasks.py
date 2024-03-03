@@ -17,7 +17,7 @@ def get_binance_data():
 
 @shared_task
 def get_current_price(name):
-    url = f'https://api.binance.com/api/v3/ticker/price?symbol={name} + USDT'
+    url = f'https://api.binance.com/api/v3/ticker/price?symbol={name}USDT'
     response = requests.get(url)
     data = response.json()
     price = data['price']
