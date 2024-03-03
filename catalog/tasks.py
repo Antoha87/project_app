@@ -23,6 +23,6 @@ def get_current_price(name):
     response = requests.get(url)
     data = response.json()
     price = data['price']
-    CoinPrice.objects.create(name=name, time=datetime.now(), price=price)
+    CoinPrice.objects.create(coin=name, time=datetime.now(), price=price)
     print("finished")
 
