@@ -149,6 +149,6 @@ CELERY_RESULT_BACKEND = 'redis://redis:6379/0'  # Redis URL
 CELERY_BEAT_SCHEDULE = {
     'fetch-binancedata-every-minute': {
         'task': 'catalog.tasks.get_binance_data',
-        'schedule': 60.0,  # Execute every minute
+        'schedule': 60 * 60,  # Execute every minute
     },
 }
