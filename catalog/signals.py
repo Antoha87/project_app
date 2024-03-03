@@ -8,8 +8,7 @@ from .models import Coin
 def post_save_coin(sender, instance, created, **kwargs):
     if created:
         name = instance.name
-        price = get_current_price.delay(name)
-        instance.price = price
-        coin_id = instance.id
+        get_current_price.delay(name)
 
-        Coin.objects.get(id=coin_id).update(price=price)
+
+
